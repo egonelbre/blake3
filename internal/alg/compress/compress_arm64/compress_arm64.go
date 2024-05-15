@@ -1,4 +1,4 @@
-package compress_pure
+package compress_arm64
 
 import "github.com/zeebo/blake3/internal/consts"
 
@@ -19,4 +19,11 @@ func Compress(
 	}
 
 	rcompress(out, block)
+}
+
+func rcompress(state, block *[16]uint32)
+
+//go:noinline
+func rcompress2(state, block *[16]uint32) {
+	state[0] = 100
 }
