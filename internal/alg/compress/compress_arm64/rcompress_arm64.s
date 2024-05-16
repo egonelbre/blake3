@@ -34,31 +34,37 @@
 #define tmp2 V11
 
 #define MIX(a, b, c, d, mx, my) \
-	\ // a += b + mx
+	\ // a = a + b
 	VADD   b.S4,  a.S4, a.S4 \
+	\ // a = a + mx
 	VADD   mx.S4, a.S4, a.S4 \
-	\ // d = bits.RotateLeft32(d^a, -16)
+	\ // d = d ^ a
 	VEOR   a.B16, d.B16, d.B16 \
+	\ // a = a + my
+	VADD   my.S4, a.S4, a.S4  \
+	\ // d = bits.RotateLeft32(d, -16)
 	VREV32 d.H8,  d.H8 \
-	\ // c += d
+	\ // c = c + d
 	VADD   d.S4, c.S4, c.S4  \
-	\ // b = bits.RotateLeft32(b^c, -12)
+	\ // b = b ^ c
 	VEOR   c.B16, b.B16, b.B16 \
+	\ // b = bits.RotateLeft32(b, -12)
 	VSHL   $20, b.S4,  tmp1.S4 \
 	VSRI   $12, b.S4,  tmp1.S4 \
 	VMOV   tmp1.B16, b.B16 \
-	\ // a += b + my
+	\ // a = a + b
 	VADD   b.S4, a.S4, a.S4  \
-	VADD   my.S4, a.S4, a.S4  \
-	\ // d = bits.RotateLeft32(d^a, -8)
+	\ // d = d ^ a
 	VEOR   a.B16, d.B16, d.B16 \
+	\ // d = bits.RotateLeft32(d, -8)
 	VSHL   $24, d.S4,  tmp1.S4 \
 	VSRI   $8,  d.S4,  tmp1.S4 \
 	VMOV   tmp1.B16, d.B16 \
-	\ // c += d
+	\ // c = c + d
 	VADD   d.S4, c.S4, c.S4  \
-	\ // b = bits.RotateLeft32(b^c, -7)
+	\ // b = b ^ c
 	VEOR   c.B16, b.B16, b.B16 \
+	\ // b = bits.RotateLeft32(b, -7)
 	VSHL   $25, b.S4,  tmp1.S4 \
 	VSRI   $7,  b.S4,  tmp1.S4 \
 	VMOV   tmp1.B16, b.B16
