@@ -1,5 +1,7 @@
 #include "textflag.h"
 
+// #define USE_VTBL_ROTATION
+
 #define ST0 V0
 #define ST1 V1
 #define ST2 V2
@@ -32,6 +34,10 @@
 
 #define tmp1 V10
 #define tmp2 V11
+
+#define RotS1 V12
+#define RotS2 V13
+#define RotS3 V14
 
 #define MIX(a, b, c, d, mx, my) \
 	\ // a = a + b
@@ -75,9 +81,16 @@
 	VMOV c, into.S[2] \
 	VMOV d, into.S[3]
 
+
+#ifdef USE_VTBL_ROTATION
+#define ROT1(x) VTBL RotS1.B16, [x.B16], x.B16
+#define ROT2(x) VTBL RotS2.B16, [x.B16], x.B16
+#define ROT3(x) VTBL RotS3.B16, [x.B16], x.B16
+#else
 #define ROT1(x) VEXT  $4, x.B16, x.B16, x.B16
 #define ROT2(x) VEXT  $8, x.B16, x.B16, x.B16
 #define ROT3(x) VEXT $12, x.B16, x.B16, x.B16
+#endif
 
 #define ROUNDA(q1, q2, q3, q4, u1, u2, u3, u4) \
 	SET(MX, q1, q2, q3, q4) \
@@ -95,6 +108,11 @@
 TEXT ·rcompress(SB), NOSPLIT, $0-16
 	MOVD state+0(FP), R0
 	MOVD block+8(FP), R1
+
+	#ifdef USE_VTBL_ROTATION
+	MOVD $·rotationTable(SB), R11
+	VLD1 (R11), [RotS1.B16, RotS2.B16, RotS3.B16]
+	#endif
 
 	VLD1 (R0), [ST0.S4, ST1.S4, ST2.S4, ST3.S4]
 	VLD1 (R1), [BL0.S4, BL1.S4, BL2.S4, BL3.S4]
@@ -141,3 +159,17 @@ TEXT ·rcompress(SB), NOSPLIT, $0-16
 	VST1 [V16.S4, V17.S4, V18.S4, V19.S4], (R0)
 
 	RET
+
+DATA	·rotationTable+0x00(SB)/4, $0x07060504
+DATA	·rotationTable+0x04(SB)/4, $0x0b0a0908
+DATA	·rotationTable+0x08(SB)/4, $0x0f0e0d0c
+DATA	·rotationTable+0x0c(SB)/4, $0x03020100
+DATA	·rotationTable+0x10(SB)/4, $0x0b0a0908
+DATA	·rotationTable+0x14(SB)/4, $0x0f0e0d0c
+DATA	·rotationTable+0x18(SB)/4, $0x03020100
+DATA	·rotationTable+0x1c(SB)/4, $0x07060504
+DATA	·rotationTable+0x20(SB)/4, $0x0f0e0d0c
+DATA	·rotationTable+0x24(SB)/4, $0x03020100
+DATA	·rotationTable+0x28(SB)/4, $0x07060504
+DATA	·rotationTable+0x2c(SB)/4, $0x0b0a0908
+GLOBL	·rotationTable(SB), NOPTR|RODATA, $48

@@ -7,6 +7,22 @@ import (
 	"github.com/zeebo/blake3/internal/alg/compress/compress_pure"
 )
 
+func TestDebug(t *testing.T) {
+	var a, b [16]uint32
+	a[0] = 0x00112233
+	a[1] = 0x44556677
+	a[2] = 0x8899aabb
+	a[3] = 0xccddeeff
+	a[4] = 0x00112233
+	a[5] = 0x44556677
+	a[6] = 0x8899aabb
+	a[7] = 0xccddeeff
+
+	rcompress(&a, &b)
+
+	t.Logf("%08x %08x %08x %08x", a[0], a[1], a[2], a[3])
+}
+
 func BenchmarkRCompress(b *testing.B) {
 	var state, block [16]uint32
 	for i := 0; i < b.N; i++ {
@@ -46,7 +62,7 @@ func TestRCompress(t *testing.T) {
 			rcompress(&asma, &asmb)
 
 			goa, gob := test.a, test.b
-			rcompress3(&goa, &gob)
+			compress_pure.RCompress(&goa, &gob)
 
 			if asma != goa || asmb != gob || asmb != test.b {
 				t.Error("different result")
