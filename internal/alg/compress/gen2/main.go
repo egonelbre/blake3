@@ -16,11 +16,11 @@ func main() {
 			my := [4]byte{schedule[1+part*8], schedule[3+part*8], schedule[5+part*8], schedule[7+part*8]}
 
 			for i := range mx {
-				fmt.Printf("%s%03x(SB)/4, $0x%02x%02x%02x%02x // MX[%v] = %v\n", prefix, tableOffset, mx[i]*4+3, mx[i]*4+2, mx[i]*4+1, mx[0]*4, i, mx[i])
+				fmt.Printf("%s%03x(SB)/4, $0x%02x%02x%02x%02x // MX[%v] = %v\n", prefix, tableOffset, mx[i]*4+3, mx[i]*4+2, mx[i]*4+1, mx[i]*4, i, mx[i])
 				tableOffset += 4
 			}
 			for i := range my {
-				fmt.Printf("%s%03x(SB)/4, $0x%02x%02x%02x%02x // MY[%v] = %v\n", prefix, tableOffset, my[i]*4+3, my[i]*4+2, my[i]*4+1, my[0]*4, i, my[i])
+				fmt.Printf("%s%03x(SB)/4, $0x%02x%02x%02x%02x // MY[%v] = %v\n", prefix, tableOffset, my[i]*4+3, my[i]*4+2, my[i]*4+1, my[i]*4, i, my[i])
 				tableOffset += 4
 			}
 		}
