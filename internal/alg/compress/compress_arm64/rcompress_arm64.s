@@ -19,12 +19,7 @@
 #define MBX V10
 #define MBY V11
 
-#define tmp1 V30
-#define tmp2 V31
-
-#define RotS1 V12
-#define RotS2 V13
-#define RotS3 V14
+#define tmp V31
 
 #define MIX(a, b, c, d, mx, my) \
 	\ // a = a + b
@@ -42,25 +37,25 @@
 	\ // b = b ^ c
 	VEOR   c.B16, b.B16, b.B16 \
 	\ // b = bits.RotateLeft32(b, -12)
-	VSHL   $20, b.S4,  tmp1.S4 \
-	VSRI   $12, b.S4,  tmp1.S4 \
-	VMOV   tmp1.B16, b.B16 \
+	VSHL   $20, b.S4,  tmp.S4 \
+	VSRI   $12, b.S4,  tmp.S4 \
+	VMOV   tmp.B16, b.B16 \
 	\ // a = a + b
 	VADD   b.S4, a.S4, a.S4  \
 	\ // d = d ^ a
 	VEOR   a.B16, d.B16, d.B16 \
 	\ // d = bits.RotateLeft32(d, -8)
-	VSHL   $24, d.S4,  tmp1.S4 \
-	VSRI   $8,  d.S4,  tmp1.S4 \
-	VMOV   tmp1.B16, d.B16 \
+	VSHL   $24, d.S4,  tmp.S4 \
+	VSRI   $8,  d.S4,  tmp.S4 \
+	VMOV   tmp.B16, d.B16 \
 	\ // c = c + d
 	VADD   d.S4, c.S4, c.S4  \
 	\ // b = b ^ c
 	VEOR   c.B16, b.B16, b.B16 \
 	\ // b = bits.RotateLeft32(b, -7)
-	VSHL   $25, b.S4,  tmp1.S4 \
-	VSRI   $7,  b.S4,  tmp1.S4 \
-	VMOV   tmp1.B16, b.B16
+	VSHL   $25, b.S4,  tmp.S4 \
+	VSRI   $7,  b.S4,  tmp.S4 \
+	VMOV   tmp.B16, b.B16
 
 #define SET(into, a, b, c, d) \
 	VMOV a, into.S[0] \
