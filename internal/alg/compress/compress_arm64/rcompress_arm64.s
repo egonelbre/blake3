@@ -164,12 +164,143 @@ DATA	·rotationTable+0x00(SB)/4, $0x07060504
 DATA	·rotationTable+0x04(SB)/4, $0x0b0a0908
 DATA	·rotationTable+0x08(SB)/4, $0x0f0e0d0c
 DATA	·rotationTable+0x0c(SB)/4, $0x03020100
+
 DATA	·rotationTable+0x10(SB)/4, $0x0b0a0908
 DATA	·rotationTable+0x14(SB)/4, $0x0f0e0d0c
 DATA	·rotationTable+0x18(SB)/4, $0x03020100
 DATA	·rotationTable+0x1c(SB)/4, $0x07060504
+
 DATA	·rotationTable+0x20(SB)/4, $0x0f0e0d0c
 DATA	·rotationTable+0x24(SB)/4, $0x03020100
 DATA	·rotationTable+0x28(SB)/4, $0x07060504
 DATA	·rotationTable+0x2c(SB)/4, $0x0b0a0908
 GLOBL	·rotationTable(SB), NOPTR|RODATA, $48
+
+// MessageSchedule table
+// Round 1, Part 1
+DATA    ·messageSchedule+0x000(SB)/4, $0x03020100 // MX[0] = 0
+DATA    ·messageSchedule+0x004(SB)/4, $0x0b0a0900 // MX[1] = 2
+DATA    ·messageSchedule+0x008(SB)/4, $0x13121100 // MX[2] = 4
+DATA    ·messageSchedule+0x00c(SB)/4, $0x1b1a1900 // MX[3] = 6
+DATA    ·messageSchedule+0x010(SB)/4, $0x07060504 // MY[0] = 1
+DATA    ·messageSchedule+0x014(SB)/4, $0x0f0e0d04 // MY[1] = 3
+DATA    ·messageSchedule+0x018(SB)/4, $0x17161504 // MY[2] = 5
+DATA    ·messageSchedule+0x01c(SB)/4, $0x1f1e1d04 // MY[3] = 7
+// Round 1, Part 2
+DATA    ·messageSchedule+0x020(SB)/4, $0x23222120 // MX[0] = 8
+DATA    ·messageSchedule+0x024(SB)/4, $0x2b2a2920 // MX[1] = 10
+DATA    ·messageSchedule+0x028(SB)/4, $0x33323120 // MX[2] = 12
+DATA    ·messageSchedule+0x02c(SB)/4, $0x3b3a3920 // MX[3] = 14
+DATA    ·messageSchedule+0x030(SB)/4, $0x27262524 // MY[0] = 9
+DATA    ·messageSchedule+0x034(SB)/4, $0x2f2e2d24 // MY[1] = 11
+DATA    ·messageSchedule+0x038(SB)/4, $0x37363524 // MY[2] = 13
+DATA    ·messageSchedule+0x03c(SB)/4, $0x3f3e3d24 // MY[3] = 15
+// Round 2, Part 1
+DATA    ·messageSchedule+0x040(SB)/4, $0x0b0a0908 // MX[0] = 2
+DATA    ·messageSchedule+0x044(SB)/4, $0x0f0e0d08 // MX[1] = 3
+DATA    ·messageSchedule+0x048(SB)/4, $0x1f1e1d08 // MX[2] = 7
+DATA    ·messageSchedule+0x04c(SB)/4, $0x13121108 // MX[3] = 4
+DATA    ·messageSchedule+0x050(SB)/4, $0x1b1a1918 // MY[0] = 6
+DATA    ·messageSchedule+0x054(SB)/4, $0x2b2a2918 // MY[1] = 10
+DATA    ·messageSchedule+0x058(SB)/4, $0x03020118 // MY[2] = 0
+DATA    ·messageSchedule+0x05c(SB)/4, $0x37363518 // MY[3] = 13
+// Round 2, Part 2
+DATA    ·messageSchedule+0x060(SB)/4, $0x07060504 // MX[0] = 1
+DATA    ·messageSchedule+0x064(SB)/4, $0x33323104 // MX[1] = 12
+DATA    ·messageSchedule+0x068(SB)/4, $0x27262504 // MX[2] = 9
+DATA    ·messageSchedule+0x06c(SB)/4, $0x3f3e3d04 // MX[3] = 15
+DATA    ·messageSchedule+0x070(SB)/4, $0x2f2e2d2c // MY[0] = 11
+DATA    ·messageSchedule+0x074(SB)/4, $0x1716152c // MY[1] = 5
+DATA    ·messageSchedule+0x078(SB)/4, $0x3b3a392c // MY[2] = 14
+DATA    ·messageSchedule+0x07c(SB)/4, $0x2322212c // MY[3] = 8
+// Round 3, Part 1
+DATA    ·messageSchedule+0x080(SB)/4, $0x0f0e0d0c // MX[0] = 3
+DATA    ·messageSchedule+0x084(SB)/4, $0x2b2a290c // MX[1] = 10
+DATA    ·messageSchedule+0x088(SB)/4, $0x3736350c // MX[2] = 13
+DATA    ·messageSchedule+0x08c(SB)/4, $0x1f1e1d0c // MX[3] = 7
+DATA    ·messageSchedule+0x090(SB)/4, $0x13121110 // MY[0] = 4
+DATA    ·messageSchedule+0x094(SB)/4, $0x33323110 // MY[1] = 12
+DATA    ·messageSchedule+0x098(SB)/4, $0x0b0a0910 // MY[2] = 2
+DATA    ·messageSchedule+0x09c(SB)/4, $0x3b3a3910 // MY[3] = 14
+// Round 3, Part 2
+DATA    ·messageSchedule+0x0a0(SB)/4, $0x1b1a1918 // MX[0] = 6
+DATA    ·messageSchedule+0x0a4(SB)/4, $0x27262518 // MX[1] = 9
+DATA    ·messageSchedule+0x0a8(SB)/4, $0x2f2e2d18 // MX[2] = 11
+DATA    ·messageSchedule+0x0ac(SB)/4, $0x23222118 // MX[3] = 8
+DATA    ·messageSchedule+0x0b0(SB)/4, $0x17161514 // MY[0] = 5
+DATA    ·messageSchedule+0x0b4(SB)/4, $0x03020114 // MY[1] = 0
+DATA    ·messageSchedule+0x0b8(SB)/4, $0x3f3e3d14 // MY[2] = 15
+DATA    ·messageSchedule+0x0bc(SB)/4, $0x07060514 // MY[3] = 1
+// Round 4, Part 1
+DATA    ·messageSchedule+0x0c0(SB)/4, $0x2b2a2928 // MX[0] = 10
+DATA    ·messageSchedule+0x0c4(SB)/4, $0x33323128 // MX[1] = 12
+DATA    ·messageSchedule+0x0c8(SB)/4, $0x3b3a3928 // MX[2] = 14
+DATA    ·messageSchedule+0x0cc(SB)/4, $0x37363528 // MX[3] = 13
+DATA    ·messageSchedule+0x0d0(SB)/4, $0x1f1e1d1c // MY[0] = 7
+DATA    ·messageSchedule+0x0d4(SB)/4, $0x2726251c // MY[1] = 9
+DATA    ·messageSchedule+0x0d8(SB)/4, $0x0f0e0d1c // MY[2] = 3
+DATA    ·messageSchedule+0x0dc(SB)/4, $0x3f3e3d1c // MY[3] = 15
+// Round 4, Part 2
+DATA    ·messageSchedule+0x0e0(SB)/4, $0x13121110 // MX[0] = 4
+DATA    ·messageSchedule+0x0e4(SB)/4, $0x2f2e2d10 // MX[1] = 11
+DATA    ·messageSchedule+0x0e8(SB)/4, $0x17161510 // MX[2] = 5
+DATA    ·messageSchedule+0x0ec(SB)/4, $0x07060510 // MX[3] = 1
+DATA    ·messageSchedule+0x0f0(SB)/4, $0x03020100 // MY[0] = 0
+DATA    ·messageSchedule+0x0f4(SB)/4, $0x0b0a0900 // MY[1] = 2
+DATA    ·messageSchedule+0x0f8(SB)/4, $0x23222100 // MY[2] = 8
+DATA    ·messageSchedule+0x0fc(SB)/4, $0x1b1a1900 // MY[3] = 6
+// Round 5, Part 1
+DATA    ·messageSchedule+0x100(SB)/4, $0x33323130 // MX[0] = 12
+DATA    ·messageSchedule+0x104(SB)/4, $0x27262530 // MX[1] = 9
+DATA    ·messageSchedule+0x108(SB)/4, $0x3f3e3d30 // MX[2] = 15
+DATA    ·messageSchedule+0x10c(SB)/4, $0x3b3a3930 // MX[3] = 14
+DATA    ·messageSchedule+0x110(SB)/4, $0x37363534 // MY[0] = 13
+DATA    ·messageSchedule+0x114(SB)/4, $0x2f2e2d34 // MY[1] = 11
+DATA    ·messageSchedule+0x118(SB)/4, $0x2b2a2934 // MY[2] = 10
+DATA    ·messageSchedule+0x11c(SB)/4, $0x23222134 // MY[3] = 8
+// Round 5, Part 2
+DATA    ·messageSchedule+0x120(SB)/4, $0x1f1e1d1c // MX[0] = 7
+DATA    ·messageSchedule+0x124(SB)/4, $0x1716151c // MX[1] = 5
+DATA    ·messageSchedule+0x128(SB)/4, $0x0302011c // MX[2] = 0
+DATA    ·messageSchedule+0x12c(SB)/4, $0x1b1a191c // MX[3] = 6
+DATA    ·messageSchedule+0x130(SB)/4, $0x0b0a0908 // MY[0] = 2
+DATA    ·messageSchedule+0x134(SB)/4, $0x0f0e0d08 // MY[1] = 3
+DATA    ·messageSchedule+0x138(SB)/4, $0x07060508 // MY[2] = 1
+DATA    ·messageSchedule+0x13c(SB)/4, $0x13121108 // MY[3] = 4
+// Round 6, Part 1
+DATA    ·messageSchedule+0x140(SB)/4, $0x27262524 // MX[0] = 9
+DATA    ·messageSchedule+0x144(SB)/4, $0x2f2e2d24 // MX[1] = 11
+DATA    ·messageSchedule+0x148(SB)/4, $0x23222124 // MX[2] = 8
+DATA    ·messageSchedule+0x14c(SB)/4, $0x3f3e3d24 // MX[3] = 15
+DATA    ·messageSchedule+0x150(SB)/4, $0x3b3a3938 // MY[0] = 14
+DATA    ·messageSchedule+0x154(SB)/4, $0x17161538 // MY[1] = 5
+DATA    ·messageSchedule+0x158(SB)/4, $0x33323138 // MY[2] = 12
+DATA    ·messageSchedule+0x15c(SB)/4, $0x07060538 // MY[3] = 1
+// Round 6, Part 2
+DATA    ·messageSchedule+0x160(SB)/4, $0x37363534 // MX[0] = 13
+DATA    ·messageSchedule+0x164(SB)/4, $0x03020134 // MX[1] = 0
+DATA    ·messageSchedule+0x168(SB)/4, $0x0b0a0934 // MX[2] = 2
+DATA    ·messageSchedule+0x16c(SB)/4, $0x13121134 // MX[3] = 4
+DATA    ·messageSchedule+0x170(SB)/4, $0x0f0e0d0c // MY[0] = 3
+DATA    ·messageSchedule+0x174(SB)/4, $0x2b2a290c // MY[1] = 10
+DATA    ·messageSchedule+0x178(SB)/4, $0x1b1a190c // MY[2] = 6
+DATA    ·messageSchedule+0x17c(SB)/4, $0x1f1e1d0c // MY[3] = 7
+// Round 7, Part 1
+DATA    ·messageSchedule+0x180(SB)/4, $0x2f2e2d2c // MX[0] = 11
+DATA    ·messageSchedule+0x184(SB)/4, $0x1716152c // MX[1] = 5
+DATA    ·messageSchedule+0x188(SB)/4, $0x0706052c // MX[2] = 1
+DATA    ·messageSchedule+0x18c(SB)/4, $0x2322212c // MX[3] = 8
+DATA    ·messageSchedule+0x190(SB)/4, $0x3f3e3d3c // MY[0] = 15
+DATA    ·messageSchedule+0x194(SB)/4, $0x0302013c // MY[1] = 0
+DATA    ·messageSchedule+0x198(SB)/4, $0x2726253c // MY[2] = 9
+DATA    ·messageSchedule+0x19c(SB)/4, $0x1b1a193c // MY[3] = 6
+// Round 7, Part 2
+DATA    ·messageSchedule+0x1a0(SB)/4, $0x3b3a3938 // MX[0] = 14
+DATA    ·messageSchedule+0x1a4(SB)/4, $0x0b0a0938 // MX[1] = 2
+DATA    ·messageSchedule+0x1a8(SB)/4, $0x0f0e0d38 // MX[2] = 3
+DATA    ·messageSchedule+0x1ac(SB)/4, $0x1f1e1d38 // MX[3] = 7
+DATA    ·messageSchedule+0x1b0(SB)/4, $0x2b2a2928 // MY[0] = 10
+DATA    ·messageSchedule+0x1b4(SB)/4, $0x33323128 // MY[1] = 12
+DATA    ·messageSchedule+0x1b8(SB)/4, $0x13121128 // MY[2] = 4
+DATA    ·messageSchedule+0x1bc(SB)/4, $0x37363528 // MY[3] = 13
+GLOBL   ·messageSchedule(SB), NOPTR|RODATA, $0x1c0
