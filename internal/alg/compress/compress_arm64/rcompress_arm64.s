@@ -2,32 +2,17 @@
 
 // #define USE_VTBL_ROTATION
 
+// state in registers
 #define ST0 V0
 #define ST1 V1
 #define ST2 V2
 #define ST3 V3
 
+// block in these registers
 #define BL0 V4
 #define BL1 V5
 #define BL2 V6
 #define BL3 V7
-
-#define M0 BL0.S[0]
-#define M1 BL0.S[1]
-#define M2 BL0.S[2]
-#define M3 BL0.S[3]
-#define M4 BL1.S[0]
-#define M5 BL1.S[1]
-#define M6 BL1.S[2]
-#define M7 BL1.S[3]
-#define M8 BL2.S[0]
-#define M9 BL2.S[1]
-#define MA BL2.S[2]
-#define MB BL2.S[3]
-#define MC BL3.S[0]
-#define MD BL3.S[1]
-#define ME BL3.S[2]
-#define MF BL3.S[3]
 
 #define RSCHEDULETABLE R12
 
@@ -35,8 +20,6 @@
 #define MAY V9
 #define MBX V10
 #define MBY V11
-#define MX V8
-#define MY V9
 
 #define tmp1 V30
 #define tmp2 V31
